@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Soul NFT - Divine Ascendants</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.1/ethers.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#home" class="logo">PURE SOUL NFT</a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#faq">FAQ</a>
+                <a href="#" onclick="redirectToWhitepaper()">Whitepaper</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- Hero section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>UNLEASH THE POWER OF</h1>
+                <h2 class="hero-title">DIVINE<br>ASCENDANTS</h2>
+                <p class="hero-description">Discover celestial beings forged from myth and legend.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="label">PRICE:</span> 0.1 BNB + GAS
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">16,667 TOTAL SUPPLY</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">MINT STATUS:</span> LIVE NOW
+                    </div>
+                </div>
+
+                <div class="supply-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">16,667</div>
+                        <div class="stat-label">Total Supply</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="mintedCount">Loading...</div>
+                        <div class="stat-label">Minted</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="remainingCount">Loading...</div>
+                        <div class="stat-label">Remaining</div>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <button class="mint-btn" onclick="redirectToMintDapp()">MINT NOW →</button>
+                    <a href="#about" class="learn-btn">LEARN MORE</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img class="hero-character" src="images/hero-character.jpg" alt="Divine Ascendant Character">
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="about-section">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Welcome to the world of Pure Soul</h2>
+                    <p>A digital collectible universe where mythic legends and divine energies are immortalized on the blockchain. This project stands at the intersection of high fantasy and next-generation technology, creating a unique space for collectors, gamers, and lore enthusiasts.</p>
+                    <p>We are building a rich, decentralized world filled with legendary characters, sacred relics, and celestial power. Our goal is to forge a new kind of collectible culture, one that is deeply rooted in story and community.</p>
+                    <p>The foundation of the Pure Soul universe is a cosmic war fought between three powerful celestial factions. The journey begins with the Divine Ascendants, a host of radiant guardians, mythic warriors, and prophets drawn from scripture and ancient prophecy.</p>
+                    <p>Following them are the Primordial Deities, supreme beings from pre-creation mythologies who hold immense power. Finally, the Fallen Titans will emerge, introducing rebellious forces, chaos entities, and dark powers that seek to challenge the established order.Each faction brings its own unique
+                        lore, characters, and strategic depth to the ecosystem.
+                        Every NFT in the Pure Soul collection is more than just a digital asset; it is a piece of a larger,
+                        evolving narrative. By owning one of these tokens, you are not simply a collector, but an
+                        active participant in a lore-driven universe. The initial release, Divine Ascendants, invites you
+                        to acquire your first guardians and become part of a community dedicated to exploring the
+                        deepest realms of myth and legend. Prepare to mint your hero, engage with a vibrant
+                        community, and step into a world where divinity meets digital ownership.</p>
+                </div>
+                <div class="nft-showcase">
+                    <div class="nft-card">
+                        <img src="images/character-2.jpg" alt="Divine Character 1">
+                        <h4>Legendary</h4>
+                        <p>Token IDs 1-1667</p>
+                    </div>
+                    <div class="nft-card">
+                        <img src="images/character-1.jpg" alt="Divine Character 2">
+                        <h4>Epic</h4>
+                        <p>Token IDs 1668-5000</p>
+                    </div>
+                    <div class="nft-card">
+                        <img src="images/character-6.jpg" alt="Divine Character 3">
+                        <h4>Rare</h4>
+                        <p>Token IDs 5001-10000</p>
+                    </div>
+                    <div class="nft-card">
+                        <img src="images/character-7.jpg" alt="Divine Character 4">
+                        <h4>Common</h4>
+                        <p>Token IDs 10001-16667</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio section -->
+        <section class="studio-section">
+            <div class="studio-grid">
+                <div class="studio-content">
+                    <h2>Meet The Studio</h2>
+                    <div class="studio-subtitle">PureSoul Lab</div>
+                    <p>Founded and led by a single creative mind, PureSoul Labs operates as an independent Web3 studio dedicated to crafting the Pure Soul Universe. Every element — from world-building to lore, to NFT design — is developed in-house with a focus on long-term vision, artistic integrity, and blockchain innovation.</p>
+                    <p>Pure Soul is a solo-built project, driven by passion, discipline, and a mission to create a lasting digital collectible franchise.</p>
+                    <button class="follow-btn" onclick="window.open('https://x.com/puresoultoken?s=21', '_blank')">Follow on X (formerly twitter)</button>
+                </div>
+                <div class="studio-image">
+                    <img class="studio-character" src="images/character-3.jpg" alt="Studio Character">
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap section -->
+        <section id="roadmap" class="roadmap-section">
+            <div class="roadmap-header">
+                <h2>🚀 ROADMAP</h2>
+            </div>
+            <div class="roadmap-container">
+                <div class="roadmap-phase">
+                    <div class="phase-number">1</div>
+                    <div class="phase-header">PHASE 1 - DIVINE ASCENDANTS LAUNCH</div>
+                    <ul class="phase-list">
+                        <li>Launch mint</li>
+                        <li>Reach 100 followers on X</li>
+                        <li>Grow Telegram to 300</li>
+                        <li>Marketing push</li>
+                        <li>Reach 100 NFTs sold</li>
+                    </ul>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="phase-number">2</div>
+                    <div class="phase-header">PHASE 2 - PRIMORDIAL DEITIES LAUNCH</div>
+                    <ul class="phase-list">
+                        <li>Launch second faction</li>
+                        <li>Reach 500 followers</li>
+                        <li>Reach 1,000 Telegram members</li>
+                        <li>Enable marketplace listings</li>
+                        <li>Reach 1,000 total NFTs minted</li>
+                    </ul>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="phase-number">3</div>
+                    <div class="phase-header">PHASE 3 - FALLEN TITANS & PHYSICAL GAME</div>
+                    <ul class="phase-list">
+                        <li>Launch third faction</li>
+                        <li>Release official lore book for game play mechanics</li>
+                        <li>Reach 2,500 mints</li>
+                        <li>Launch physical playing cards & rulebooks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ section -->
+        <section id="faq" class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(0)">
+                    <span>What is Pure Soul NFT?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A collectible NFT project divided into three divine factions. Each faction contains its own characters and rarity structure.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(1)">
+                    <span>How do I mint a Divine Ascendant?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Click "Mint Now," connect your wallet, and submit 0.1 BNB to mint a randomized NFT.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(2)">
+                    <span>Can I choose the NFT I mint?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No — minting is randomized to ensure rarity fairness and uniqueness.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(3)">
+                    <span>Why are there 16,667 Divine Ascendant NFTs if there aren't that many characters?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Because Pure Soul works like a trading card game. Each NFT you mint has a unique token ID, but characters can appear multiple times. There are only 50 unique Divine Ascendants characters in this drop, spread across the full supply of 16,667 NFTs. Think of it like opening card packs — you may pull the same character as someone else, but your NFT (and token ID) is one-of-a-kind.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(4)">
+                    <span>Are the other factions available?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Not yet — only Divine Ascendants are live. Primordial Deities and Fallen Titans will be released in future phases.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(5)">
+                    <span>Are rarities random when I mint?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No — rarities are pre-assigned based on token ID ranges:</p>
+                    <ul>
+                        <li>#1-1667 = Legendary</li>
+                        <li>#1668-5000 = Epic</li>
+                        <li>#5001-10000 = Rare</li>
+                        <li>#10001-16667 = Common</li>
+                    </ul>
+                    <p>When you mint, you get a random token ID, and that token ID determines your rarity and which character is pulled from that rarity pool.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community section -->
+        <section class="community-section">
+            <h2>JOIN OUR COMMUNITY</h2>
+            <p class="community-description">
+                🔗 Access early drops, alpha updates & exclusive announcements.
+            </p>
+            <div class="social-links">
+                <a href="https://x.com/puresoultoken?s=21" class="social-btn" title="Twitter/X" target="_blank">𝕏</a>
+                <a href="https://t.me/PureSoulUniverse" class="social-btn" title="Telegram" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 240 240" fill="currentColor">
+                        <defs>
+                            <linearGradient id="b" x1=".667" y1=".167" x2=".417" y2=".75">
+                                <stop offset="0" stop-color="#37aee2"/>
+                                <stop offset="1" stop-color="#1e96c8"/>
+                            </linearGradient>
+                            <linearGradient id="w" x1=".660" y1=".437" x2=".851" y2=".802">
+                                <stop offset="0" stop-color="#eff7fc"/>
+                                <stop offset="1" stop-color="#fff"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="120" cy="120" r="120" fill="url(#b)"/>
+                        <path d="m98 175c-3.888 0-3.227-1.468-4.568-5.17L82 132.207 170 80" fill="#c8daea"/>
+                        <path d="m98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035" fill="#a9c9dd"/>
+                        <path d="M100.04 144.41l48.36 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.08-3.08-11.746-8.36-9.349l-115.59 44.571c-7.89 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.91 3.776 1.258" fill="url(#w)"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025. PureSoul Lab LTD All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
