@@ -93,7 +93,7 @@ async function updateCollectionStats() {
 function redirectToMintDapp() {
     // Replace with your actual mint dapp URL
     const MINT_DAPP_URL = 'https://mint.puresoulnft.com';
-    window.open(MINT_DAPP_URL, '_blank');
+    window.location.href = MINT_DAPP_URL;
 }
 
 // Redirect to whitepaper
