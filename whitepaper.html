@@ -25,21 +25,22 @@
         /* Mobile back button */
         .mobile-back-btn {
             position: fixed;
-            top: 15px;
-            left: 15px;
+            top: 10px;
+            left: 10px;
             z-index: 1000;
-            background: rgba(139, 92, 246, 0.95);
+            background: rgba(139, 92, 246, 0.9);
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 25px;
-            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
             display: none;
             transition: all 0.3s ease;
+            line-height: 1;
         }
 
         .mobile-back-btn:active {
@@ -72,7 +73,6 @@
             body {
                 margin: 0;
                 padding: 0;
-                overflow: hidden;
             }
 
             .header {
@@ -84,14 +84,14 @@
             }
 
             .whitepaper-container {
-                padding: 0;
+                padding: 10px;
                 height: 100vh;
-                overflow: hidden;
+                box-sizing: border-box;
             }
 
             .pdf-embed {
-                height: 100vh;
-                border-radius: 0;
+                height: calc(100vh - 20px);
+                border-radius: 5px;
                 margin: 0;
             }
         }
