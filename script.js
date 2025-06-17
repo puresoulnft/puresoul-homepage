@@ -99,6 +99,6 @@ function redirectToMintDapp() {
 // Redirect to whitepaper
 function redirectToWhitepaper() {
     // Replace with your actual whitepaper URL
-    const WHITEPAPER_URL = './whitepaper.html';
+    const WHITEPAPER_URL = './whitepaper';
     window.open(WHITEPAPER_URL, '_blank');
 }
