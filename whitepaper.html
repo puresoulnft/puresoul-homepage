@@ -7,41 +7,125 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .whitepaper-container {
-            padding: 120px 20px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 20px;
+            max-width: 100%;
+            margin: 0;
+            height: 100vh;
+            box-sizing: border-box;
         }
-        
+
         .pdf-embed {
             width: 100%;
-            height: 80vh;
-            min-height: 600px;
+            height: calc(100vh - 40px);
             border: none;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            background: #fff;
         }
-        
-        @media (max-width: 768px) {
+
+        /* Mobile back button */
+        .mobile-back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(139, 92, 246, 0.95);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-back-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Desktop styles */
+        @media (min-width: 769px) {
             .whitepaper-container {
-                padding: 100px 15px 15px;
+                padding: 120px 20px 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+                height: auto;
             }
-            
+
             .pdf-embed {
-                height: 70vh;
-                min-height: 500px;
+                height: 80vh;
+                min-height: 600px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .header {
+                display: block;
+            }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .header {
+                display: none;
+            }
+
+            .mobile-back-btn {
+                display: block;
+            }
+
+            .whitepaper-container {
+                padding: 0;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .pdf-embed {
+                height: 100vh;
+                border-radius: 0;
+                margin: 0;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile back button -->
+    <button class="mobile-back-btn" onclick="goBack()">← Back</button>
+
+    <!-- Desktop header -->
     <header class="header">
         <div class="nav-container">
             <a href="index.html" class="logo" style="color: #8b5cf6;">← Back to Homepage</a>
         </div>
     </header>
-    
+
     <div class="whitepaper-container">
-        <iframe src="whitepaper.pdf" class="pdf-embed"></iframe>
+        <iframe src="whitepaper.pdf" class="pdf-embed" title="Pure Soul NFT Whitepaper"></iframe>
     </div>
+
+    <script>
+        function goBack() {
+            // Close the current tab/window
+            window.close();
+            
+            // Fallback: if window.close() doesn't work, try history.back()
+            setTimeout(() => {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }, 100);
+        }
+    </script>
 </body>
 </html>
