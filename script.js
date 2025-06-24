@@ -102,3 +102,10 @@ function redirectToWhitepaper() {
     const WHITEPAPER_URL = './whitepaper.pdf';
     window.location.href = WHITEPAPER_URL;
 }
+
+    // Reidrect to lore page
+function redirectToLore() {
+    // Replace with your actual lore page URL
+    const LORE_URL = 'https://divinelore.puresoulnft.com';
+    window.location.href = LORE_URL;
+}
