@@ -10,9 +10,9 @@ const connection = new solanaWeb3.Connection(SOLANA_RPC_URL);
 async function readLiveSupply() {
   try {
     const [collectionAddress] = solanaWeb3.PublicKey.findProgramAddressSync(
-      [Buffer.from(COLLECTION_SEED)],
-      PROGRAM_ID
-    );
+        [new TextEncoder().encode(COLLECTION_SEED)],
+        PROGRAM_ID
+      );
     
     const accountInfo = await connection.getAccountInfo(collectionAddress);
     
