@@ -39,6 +39,11 @@
     
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.1/ethers.umd.min.js"></script>  
+
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+    <script src="script.js"></script>
+
 </head>
 <body>
     <!-- Header -->
@@ -72,19 +77,19 @@
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="label">PRICE:</span> 0.1 BNB + GAS
+                        <span class="label">PRICE:</span> 0.035 SOL + GAS 
                     </div>
                     <div class="stat-item">
-                        <span class="label">16,667 TOTAL SUPPLY</span>
+                        <span class="label">3,333 TOTAL SUPPLY</span>
                     </div>
                     <div class="stat-item">
-                        <span class="label">MINT STATUS:</span> LIVE NOW
+                        <span class="label">MINT STATUS:</span> CLOSED  
                     </div>
                 </div>
 
                 <div class="supply-stats">
                     <div class="stat-card">
-                        <div class="stat-value">16,667</div>
+                        <div class="stat-value">3,333</div>
                         <div class="stat-label">Total Supply</div>
                     </div>
                     <div class="stat-card">
@@ -128,22 +133,22 @@
                     <div class="nft-card">
                         <img src="images/character-2.jpg" alt="Divine Character 1">
                         <h4>Legendary</h4>
-                        <p>Token IDs 1-1667</p>
+                        <p>10% of all mints (333 Total)</p>
                     </div>
                     <div class="nft-card">
                         <img src="images/character-1.jpg" alt="Divine Character 2">
                         <h4>Epic</h4>
-                        <p>Token IDs 1668-5000</p>
+                        <p>25% of all mints (833 Total)</p>
                     </div>
                     <div class="nft-card">
                         <img src="images/character-6.jpg" alt="Divine Character 3">
                         <h4>Rare</h4>
-                        <p>Token IDs 5001-10000</p>
+                        <p>40% of all mints (1,333 Total)</p>
                     </div>
                     <div class="nft-card">
                         <img src="images/character-7.jpg" alt="Divine Character 4">
                         <h4>Common</h4>
-                        <p>Token IDs 10001-16667</p>
+                        <p>25% of all mints (834 Total)</p>
                     </div>
                 </div>
             </div>
@@ -157,7 +162,7 @@
                     <div class="studio-subtitle">PureSoul Lab</div>
                     <p>Founded and led by a single creative mind, PureSoul Labs operates as an independent Web3 studio dedicated to crafting the Pure Soul Universe. Every element — from world-building to lore, to NFT design — is developed in-house with a focus on long-term vision, artistic integrity, and blockchain innovation.</p>
                     <p>Pure Soul is a solo-built project, driven by passion, discipline, and a mission to create a lasting digital collectible franchise.</p>
-                    <button class="follow-btn" onclick="window.open('https://x.com/puresoultoken?s=21', '_blank')">Follow on X (formerly twitter)</button>
+                    <button class="follow-btn" onclick="window.open('https://x.com/puresouldev?s=21', '_blank')">Follow on X (formerly twitter)</button>
                 </div>
                 <div class="studio-image">
                     <img class="studio-character" src="images/character-3.jpg" alt="Studio Character">
@@ -175,13 +180,15 @@
                     <div class="phase-number">1</div>
                     <div class="phase-header">PHASE 1 - DIVINE ASCENDANTS LAUNCH</div>
                     <ul class="phase-list">
-                        <li>✅ Pre-launch airdrop campaign</li>
-                        <li>✅ Launch mint</li>
-                        <li>✅ Reach 100 followers on X</li>
+                        <li>✅ Reach 300 followers on X</li>
                         <li>✅ Release official character lore for faction</li>
+                        <li>✅ Solana contract deployed (Testnet + Devnet complete)</li>
+                        <li>Update all site assets to reflect Solana switch</li>
+                        <li>Launch on Solana Mainnet</li>
+                        <li>Launch new Solana mint dApp</li>
                         <li>Reach 300 Telegram members</li>
                         <li>Marketing push</li>
-                        <li>Reach 100 total NFTs minted</li>
+                        <li>First 100 NFTs minted (goal)</li>
                     </ul>
                 </div>
 
@@ -190,11 +197,11 @@
                     <div class="phase-header">PHASE 2 - PRIMORDIAL DEITIES LAUNCH</div>
                     <ul class="phase-list">
                         <li>Launch second faction</li>
-                        <li>Reach 500 followers on X</li>
+                        <li>Reach 1,000 followers on X</li>
                         <li>Release official character lore for faction</li>
-                        <li>Reach 1,000 Telegram members</li>
+                        <li>Reach 1000 Telegram members</li>
                         <li>Enable marketplace listings</li>
-                        <li>Reach 1,000 total NFTs minted</li>
+                        <li>Reach 500 total NFTs minted</li>
                     </ul>
                 </div>
 
@@ -231,7 +238,7 @@
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Click "Mint Now," connect your wallet, and submit 0.1 BNB to mint a randomized NFT.</p>
+                    <p>Click "Mint Now," connect your wallet, and submit 0.035 + GAS(.0187) to mint a randomized NFT.</p>
                 </div>
             </div>
 
@@ -247,21 +254,36 @@
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(3)">
-                    <span>Why are there 16,667 Divine Ascendant NFTs if there aren't that many characters?</span>
+                    <span>Why are there 3,333 Divine Ascendant NFTs if there aren't that many characters?</span>
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Because Pure Soul works like a trading card game. Each NFT you mint has a unique token ID, but characters can appear multiple times. There are only 50 unique Divine Ascendants characters in this drop, spread across the full supply of 16,667 NFTs. Think of it like opening card packs — you may pull the same character as someone else, but your NFT (and token ID) is one-of-a-kind.</p>
+                    <p>Because Pure Soul works like a trading card game. Each NFT you mint has a unique ID, but characters can appear multiple times. There are only 50 unique Divine Ascendants characters in this drop, spread across the full supply of 3,333 NFTs. Think of it like opening card packs — you may pull the same character as someone else, but your NFT token is one-of-a-kind.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(4)">
-                    <span>Are the other factions available?</span>
+                    <span>Why does my wallet say “This transaction reverted during simulation. Funds may be lost if submitted"?</span>
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Not yet — only Divine Ascendants are live. Primordial Deities and Fallen Titans will be released in future phases.</p>
+                    <p>This message appears in some Solana wallets (like Phantom) during minting. It’s caused by how the wallet tries to “simulate” what a transaction will do before you approve it.
+                        Our minting process uses:
+ • 🎲 Randomized NFT assignment
+
+ • 🔀 Dynamic on-chain account creation
+
+ • 🔐 Custom payment routing to our treasury wallet.
+
+These are advanced Solana features that wallet simulations don’t fully understand yet. As a result, the simulation often fails or can’t show you the correct preview — even though the transaction is totally valid.
+
+Rest assured:
+ • ✅ Your NFT will still mint successfully
+ • ✅ Your SOL will be sent to the correct treasury wallet
+ • ✅ You will see your NFT appear in your wallet once the transaction is confirmed. This is not a bug or failure. It’s just a limitation of wallet simulations, and it happens with many advanced Solana mints — especially when randomness or new account creation is involved. We’re working within Solana’s standards, and everything is safe under the hood.
+
+💡 Tip: If you’re unsure, you can always check the transaction on Solana Explorer using the signature after confirming it.</p>
                 </div>
             </div>
 
@@ -271,12 +293,12 @@
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>No — rarities are pre-assigned based on token ID ranges:</p>
+                    <p>No — rarities are pre-assigned based on dynamic percentage ranges:</p>
                     <ul>
-                        <li>#1-1667 = Legendary</li>
-                        <li>#1668-5000 = Epic</li>
-                        <li>#5001-10000 = Rare</li>
-                        <li>#10001-16667 = Common</li>
+                        <li>%10 = Legendary</li>
+                        <li>%25 = Epic</li>
+                        <li>%40 = Rare</li>
+                        <li>%25 = Common</li>
                     </ul>
                     <p>When you mint, you get a random token ID, and that token ID determines your rarity and which character is pulled from that rarity pool.</p>
                 </div>

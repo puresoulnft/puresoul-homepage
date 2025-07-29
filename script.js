@@ -1,31 +1,81 @@
-// Contract configuration for reading stats only
-const CONTRACT_ADDRESS = '0x33df1aeb441456dd1257c1011c6d776e8464ebf5';
-const BSC_RPC_URL = 'https://bsc-dataseed1.binance.org/';
+// Solana configuration for reading stats using global solanaWeb3
+const PROGRAM_ID = new solanaWeb3.PublicKey("2oAejyxAkU6Kfts9PNSWwgDFSs1YPEFpFtQb3kzkW8hK");
+const COLLECTION_SEED = "pure_soulfinal5";
 
-// Minimal ABI for reading stats only
-const CONTRACT_ABI = [
-    {
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "remainingSupply", 
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "stateMutability": "view",
-        "type": "function"
+// Initialize Solana connection
+const SOLANA_RPC_URL = 'https://api.devnet.solana.com'; // Change to mainnet when ready
+const connection = new solanaWeb3.Connection(SOLANA_RPC_URL);
+
+// Function to read live supply from Solana
+async function readLiveSupply() {
+  try {
+    const [collectionAddress] = solanaWeb3.PublicKey.findProgramAddressSync(
+      [Buffer.from(COLLECTION_SEED)],
+      PROGRAM_ID
+    );
+    
+    const accountInfo = await connection.getAccountInfo(collectionAddress);
+    
+    if (!accountInfo) {
+      console.log('Collection account not found');
+      return { totalSupply: 3333, currentSupply: 0, remaining: 3333 };
     }
-];
+    
+    const data = accountInfo.data;
+    
+    // Use the correct offsets from your debug output
+    const totalSupplyOffset = 99;
+    const currentSupplyOffset = 103;
+    
+    const totalSupply = data.readUInt32LE(totalSupplyOffset);
+    const currentSupply = data.readUInt32LE(currentSupplyOffset);
+    const remaining = totalSupply - currentSupply;
+    
+    console.log('📊 Live Supply:', { totalSupply, currentSupply, remaining });
+    
+    return { totalSupply, currentSupply, remaining };
+    
+  } catch (error) {
+    console.error('Error reading supply:', error);
+    return { totalSupply: 3333, currentSupply: 0, remaining: 3333 };
+  }
+}
+
+// Update collection stats from Solana contract
+async function updateCollectionStats() {
+    try {
+        const supplyData = await readLiveSupply();
+        
+        // Update HTML elements
+        const mintedElement = document.getElementById('mintedCount');
+        const remainingElement = document.getElementById('remainingCount');
+        
+        if (mintedElement) {
+            mintedElement.textContent = supplyData.currentSupply.toLocaleString();
+        }
+        if (remainingElement) {
+            remainingElement.textContent = supplyData.remaining.toLocaleString();
+        }
+        
+        return supplyData;
+        
+    } catch (error) {
+        console.error('Error updating stats:', error);
+        // Fallback values on error
+        const mintedElement = document.getElementById('mintedCount');
+        const remainingElement = document.getElementById('remainingCount');
+        
+        if (mintedElement) mintedElement.textContent = 'Error';
+        if (remainingElement) remainingElement.textContent = 'Error';
+    }
+}
 
 // Initialize on page load
 window.addEventListener('load', async function() {
     // Update collection stats
     await updateCollectionStats();
     
-    // Update stats periodically
+    // Update stats periodically every 30 seconds
     setInterval(updateCollectionStats, 30000);
 });
 
@@ -70,25 +120,6 @@ function toggleFAQ(index) {
     }
 }
 
-// Update collection stats from contract (read-only)
-async function updateCollectionStats() {
-    try {
-        // Create read-only contract for stats
-        const readProvider = new ethers.JsonRpcProvider(BSC_RPC_URL);
-        const readContract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, readProvider);
-        
-        const totalSupply = await readContract.totalSupply();
-        const remainingSupply = await readContract.remainingSupply();
-        
-        document.getElementById('mintedCount').textContent = totalSupply.toString();
-        document.getElementById('remainingCount').textContent = remainingSupply.toString();
-    } catch (error) {
-        console.error('Error updating stats:', error);
-        document.getElementById('mintedCount').textContent = 'Error';
-        document.getElementById('remainingCount').textContent = 'Error';
-    }
-}
-
 // Redirect to mint dapp
 function redirectToMintDapp() {
     // Replace with your actual mint dapp URL
@@ -103,7 +134,7 @@ function redirectToWhitepaper() {
     window.location.href = WHITEPAPER_URL;
 }
 
-    // Reidrect to lore page
+// Redirect to lore page
 function redirectToLore() {
     // Replace with your actual lore page URL
     const LORE_URL = 'https://divinelore.puresoulnft.com';
